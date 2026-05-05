@@ -243,6 +243,66 @@ tr.tr.drag-over-bot{box-shadow:inset 0 -2px 0 0 var(--acc)}
 .gr-del:hover{background:#fce4ec;color:#c9372c}
 tr.gr:hover .gr-del{display:inline-block}
 .stream-date-range{font-size:10px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ── DARK MODE ───────────────────────────────────────────── */
+body.dark{
+  --bg:#1c1f3b;--bg2:#262945;--bg3:#303455;
+  --tx:#d5d8ef;--tx2:#8b8fb5;--tx3:#5c6080;
+  --bd:rgba(255,255,255,.07);--bd2:rgba(255,255,255,.14);
+  --acc:#579bfc;--today:#f87171;
+}
+.dark-toggle{width:30px;height:30px;border-radius:50%;border:0.5px solid var(--bd2);background:var(--bg3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;margin-left:auto;flex-shrink:0}
+.dark-toggle:hover{background:var(--bg2)}
+
+/* ── SIDE PANEL ──────────────────────────────────────────── */
+.panel-backdrop{position:fixed;inset:0;z-index:900;pointer-events:none}
+.panel-backdrop.open{pointer-events:all}
+.side-panel{position:fixed;top:0;right:0;width:420px;max-width:95vw;height:100vh;background:var(--bg);border-left:1px solid var(--bd2);box-shadow:-4px 0 24px rgba(0,0,0,.12);z-index:910;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .22s cubic-bezier(.4,0,.2,1)}
+.side-panel.open{transform:translateX(0)}
+.panel-hdr{display:flex;align-items:center;gap:8px;padding:14px 16px 10px;border-bottom:1px solid var(--bd2);flex-shrink:0}
+.panel-title{font-size:14px;font-weight:700;color:var(--tx);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.panel-close{background:none;border:none;cursor:pointer;color:var(--tx3);font-size:18px;padding:2px 6px;border-radius:4px;line-height:1}
+.panel-close:hover{background:var(--bg3);color:var(--tx)}
+.panel-body{flex:1;overflow-y:auto;padding:14px 16px}
+.panel-section{margin-bottom:18px}
+.panel-label{font-size:10px;font-weight:600;color:var(--tx3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.panel-val{font-size:12px;color:var(--tx2);line-height:1.5}
+.panel-field{display:grid;grid-template-columns:100px 1fr;gap:6px 10px;margin-bottom:8px;align-items:start}
+.panel-field-lbl{font-size:11px;color:var(--tx3);padding-top:2px}
+.panel-field-val{font-size:12px;color:var(--tx)}
+/* Comments */
+.comment-list{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.comment-item{background:var(--bg2);border-radius:6px;padding:8px 10px}
+.comment-meta{font-size:10px;color:var(--tx3);margin-bottom:3px}
+.comment-text{font-size:12px;color:var(--tx);line-height:1.5;word-break:break-word}
+.comment-inp-row{display:flex;gap:6px;align-items:flex-end}
+.comment-inp{flex:1;font-size:12px;border:0.5px solid var(--bd2);border-radius:6px;padding:6px 10px;background:var(--bg);color:var(--tx);resize:none;min-height:36px;max-height:100px;font-family:inherit}
+.comment-inp:focus{outline:none;border-color:var(--acc)}
+.comment-send{height:34px;padding:0 14px;background:var(--acc);color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:12px;white-space:nowrap;flex-shrink:0}
+.comment-send:hover{filter:brightness(1.08)}
+
+/* ── OVERDUE ─────────────────────────────────────────────── */
+.date-overdue{color:#e2445c!important;font-weight:600}
+.date-overdue::before{content:'⚠ ';font-size:9px}
+
+/* ── SNAPSHOT MODAL ──────────────────────────────────────── */
+#snapOverlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:800;display:none;align-items:center;justify-content:center}
+#snapOverlay.open{display:flex}
+.snap-modal{background:var(--bg);border-radius:10px;padding:20px;width:480px;max-width:95vw;max-height:80vh;display:flex;flex-direction:column;gap:14px;box-shadow:0 8px 32px rgba(0,0,0,.2)}
+.snap-modal h3{font-size:15px;font-weight:700;color:var(--tx);margin:0}
+.snap-save-row{display:flex;gap:8px}
+.snap-save-row input{flex:1;height:30px;font-size:12px;border:0.5px solid var(--bd2);border-radius:6px;padding:0 10px;background:var(--bg);color:var(--tx)}
+.snap-save-row input:focus{outline:none;border-color:var(--acc)}
+.snap-list{overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:6px}
+.snap-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:0.5px solid var(--bd2);border-radius:6px;background:var(--bg2)}
+.snap-item-info{flex:1;min-width:0}
+.snap-item-name{font-size:12px;font-weight:600;color:var(--tx);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.snap-item-date{font-size:10px;color:var(--tx3)}
+.snap-btn{font-size:11px;padding:3px 10px;border-radius:4px;border:0.5px solid var(--bd2);background:var(--bg);color:var(--tx);cursor:pointer;white-space:nowrap}
+.snap-btn:hover{background:var(--bg3)}
+.snap-btn.restore{background:var(--acc);color:#fff;border-color:var(--acc)}
+.snap-btn.restore:hover{filter:brightness(1.1)}
+.snap-empty{font-size:12px;color:var(--tx3);text-align:center;padding:16px 0}
 </style>
 <style id="colWidthStyle">
     .lc-num{width:26px;min-width:26px}
@@ -288,6 +348,7 @@ tr.gr:hover .gr-del{display:inline-block}
       <div onclick="closeReportMenu();exportPptxWithStreamSlides()" style="padding: 8px 14px; font-size: 11px; cursor: pointer; color: var(--tx);" onmouseover="this.style.background='var(--bg2)'" onmouseout="this.style.background=''">📑 Summary + all stream slides</div>
     </div>
   </span>
+  <button class="act" onclick="openSnapModal()">📸 Snapshots</button>
   <button class="act" onclick="openStreamModal()">Streams</button>
   <button class="act pri" onclick="exportHtml()">⬇ HTML</button>
   <button class="act" onclick="exportXlsx()" style="background:#1D7044;color:#fff;border-color:#1D7044">⬇ Excel</button>
@@ -295,6 +356,12 @@ tr.gr:hover .gr-del{display:inline-block}
     ⬆ Import
     <input type="file" accept=".xlsx" style="display:none" onchange="importXlsx(this)">
   </label>
+  <button class="act" onclick="exportJson()" style="background:#2D7D9A;color:#fff;border-color:#2D7D9A">⬇ JSON</button>
+  <label class="act" style="cursor:pointer;display:inline-flex;align-items:center;gap:4px;background:#2D7D9A;color:#fff;border-color:#2D7D9A;height:24px;padding:2px 10px;font-size:11px;border-radius:var(--r)" title="Import from JSON">
+    ⬆ JSON
+    <input type="file" accept=".json" style="display:none" onchange="loadJsonFile(this)">
+  </label>
+  <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDarkMode()" title="Toggle dark mode">🌙</button>
 </div>
 
 <div class="legend" id="legend"><div class="li"><div class="lsw" style="background:#378ADD"></div><span>CB-L-Low</span></div><div class="li"><div class="lsw" style="background:#1D9E75"></div><span>CB-U</span></div><div class="li"><div class="lsw" style="background:#7F77DD"></div><span>CB-L-Medium</span></div><div class="li"><div class="lsw" style="background:#D85A30"></div><span>In person - process</span></div><div class="li"><div class="lsw" style="background:#EF9F27"></div><span>In person - Location</span></div><div class="li"><div class="lsw" style="background:#D4537E"></div><span>Standards Aus</span></div><div class="li"><div class="lsw" style="background:#888780"></div><span>Marking Tool - Decomissioning</span></div><div class="li"><div class="lsw" style="background:#534AB7"></div><span>Owner Builder module</span></div><div class="li"><div class="lsw" style="background:#0F6E56"></div><span>Gas Module</span></div><div class="li"><div class="lsw" style="background:#185FA5"></div><span>Janison Security / Roles</span></div><div class="li"><div class="lsw" style="background:#993C1D"></div><span>Plumbing</span></div><div class="li"><div class="lsw" style="background:#3B6D11"></div><span>Roles and Structure</span></div><div class="li"><div class="lsw" style="background:#854F0B"></div><span>Long-Term</span></div><div class="li"><div class="lsw" style="background:#5F5E5A"></div><span>Supports - docs</span></div><div class="li"><div class="lsw" style="background:#993556"></div><span>Supports - Trainings</span></div><div class="li"><div class="lsw" style="background:#BA7517"></div><span>JAI</span></div></div>
@@ -348,7 +415,7 @@ tr.gr:hover .gr-del{display:inline-block}
         <div class="lc-effort"><span class="editable" contenteditable="true" data-field="ef" data-id="1" spellcheck="false" title="Click to edit effort"></span></div>
         <div class="lc-tf"><span class="spill tr-on" onclick="openTrackerPopup(event,null,1)">On track</span></div>
         <div class="lc-prog"></div>
-        <div class="lc-dates">
+        <div class="lc-dates" id="dates_${t.id}">
           <div class="date-pair">
             <input class="date-inp" type="date" value="2026-03-13" data-field="s" data-id="1" title="Start date">
             <input class="date-inp" type="date" value="2026-03-16" data-field="e" data-id="1" title="End date">
@@ -3180,7 +3247,13 @@ function render(){
         ba.appendChild(bar);
       }
 
-      rc.appendChild(ba);row.appendChild(rc);tbody.appendChild(row);
+      rc.appendChild(ba);
+      // Open side panel on row click (skip interactive elements)
+      row.addEventListener('click',function(ev){
+        if(ev.target.closest('button,input,select,.spill,.drag-handle,.lc-lead,.lc-tf,.qa-menu,.date-inp,.editable,.gr-del'))return;
+        openPanel(t.id);
+      });
+      row.appendChild(rc);tbody.appendChild(row);
     });
 
     // Add task row
@@ -3222,6 +3295,7 @@ function render(){
   setupColResize();
   setupDragDrop();
   scheduleAutosave();
+  markOverdue();
 }
 
 // ── INLINE EDIT LISTENERS ────────────────────────────────────
@@ -4300,6 +4374,258 @@ document.addEventListener('mousedown',e=>{if(!e.target.closest('#reportBtn')&&!e
 
 
 
+
+// ── DARK MODE ─────────────────────────────────────────────────
+function toggleDarkMode(){
+  const isDark=document.body.classList.toggle('dark');
+  localStorage.setItem('ganttTheme',isDark?'dark':'light');
+  document.getElementById('darkToggleBtn').textContent=isDark?'☀️':'🌙';
+}
+(function(){
+  const saved=localStorage.getItem('ganttTheme');
+  if(saved==='dark'){document.body.classList.add('dark');const b=document.getElementById('darkToggleBtn');if(b)b.textContent='☀️';}
+})();
+
+// ── OVERDUE HIGHLIGHTING ──────────────────────────────────────
+function markOverdue(){
+  const now=new Date();now.setHours(0,0,0,0);
+  TASKS.forEach(t=>{
+    const el=document.getElementById('dates_'+t.id);
+    if(!el)return;
+    const inputs=el.querySelectorAll('.date-inp[data-field="e"]');
+    inputs.forEach(inp=>{
+      if(inp.value){
+        const ed=new Date(inp.value);ed.setHours(0,0,0,0);
+        if(ed<now){el.classList.add('date-overdue');}
+        else{el.classList.remove('date-overdue');}
+      }
+    });
+  });
+}
+
+// ── SIDE PANEL ────────────────────────────────────────────────
+let _panelId=null;
+
+function openPanel(id){
+  const t=TASKS.find(x=>x.id===id);
+  if(!t)return;
+  _panelId=id;
+  if(!Array.isArray(t.comments))t.comments=[];
+  document.getElementById('panelTitle').textContent=t.nm||'Task detail';
+  const col=STREAMS[t.st]||'#0073ea';
+
+  // Build panel body
+  const body=document.getElementById('panelBody');
+  body.innerHTML='';
+
+  // Colour accent bar
+  const accent=document.createElement('div');
+  accent.style.cssText='height:4px;border-radius:2px;margin-bottom:14px;background:'+col;
+  body.appendChild(accent);
+
+  // Fields grid
+  const fields=[
+    {lbl:'Stream',val:t.st},
+    {lbl:'Lead',val:(t.ld||[]).join(', ')||'—'},
+    {lbl:'Effort',val:t.ef||'—'},
+    {lbl:'Timeframe',val:t.tf||'—'},
+    {lbl:'Start',val:fmtD(t.s)||'—'},
+    {lbl:'End',val:(()=>{
+      if(!t.e)return'—';
+      const ed=new Date(t.e);ed.setHours(0,0,0,0);
+      const now=new Date();now.setHours(0,0,0,0);
+      const over=ed<now;
+      return fmtD(t.e)+(over?' ⚠ overdue':'');
+    })()},
+    {lbl:'Tracker',val:(TRACKER_DEFS.find(x=>x.key===t.tracker)||{label:'—'}).label},
+  ];
+  const grid=document.createElement('div');
+  grid.className='panel-section';
+  const lbl=document.createElement('div');lbl.className='panel-label';lbl.textContent='Details';
+  grid.appendChild(lbl);
+  fields.forEach(f=>{
+    const row=document.createElement('div');row.className='panel-field';
+    const l=document.createElement('div');l.className='panel-field-lbl';l.textContent=f.lbl;
+    const v=document.createElement('div');v.className='panel-field-val';
+    if(f.lbl==='End'&&f.val.includes('⚠')){v.style.color='#e2445c';v.style.fontWeight='600';}
+    v.textContent=f.val;
+    row.appendChild(l);row.appendChild(v);grid.appendChild(row);
+  });
+  body.appendChild(grid);
+
+  // Comments section
+  const csec=document.createElement('div');csec.className='panel-section';
+  const clbl=document.createElement('div');clbl.className='panel-label';clbl.textContent='Comments';
+  csec.appendChild(clbl);
+
+  const clist=document.createElement('div');clist.className='comment-list';clist.id='commentList';
+  renderComments(t,clist);
+  csec.appendChild(clist);
+
+  const cinpRow=document.createElement('div');cinpRow.className='comment-inp-row';
+  const cinp=document.createElement('textarea');cinp.className='comment-inp';cinp.placeholder='Add a comment…';cinp.id='commentInp';
+  cinp.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submitComment();}});
+  const csend=document.createElement('button');csend.className='comment-send';csend.textContent='Send';
+  csend.onclick=submitComment;
+  cinpRow.appendChild(cinp);cinpRow.appendChild(csend);
+  csec.appendChild(cinpRow);
+  body.appendChild(csec);
+
+  document.getElementById('panelBackdrop').classList.add('open');
+  document.getElementById('sidePanel').classList.add('open');
+}
+
+function renderComments(t,list){
+  list.innerHTML='';
+  if(!t.comments||!t.comments.length){
+    const em=document.createElement('div');em.className='panel-val';em.style.color='var(--tx3)';em.textContent='No comments yet.';
+    list.appendChild(em);return;
+  }
+  t.comments.forEach(c=>{
+    const item=document.createElement('div');item.className='comment-item';
+    const meta=document.createElement('div');meta.className='comment-meta';
+    meta.textContent=c.ts?new Date(c.ts).toLocaleString('en-AU',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'';
+    const text=document.createElement('div');text.className='comment-text';text.textContent=c.text;
+    item.appendChild(meta);item.appendChild(text);list.appendChild(item);
+  });
+}
+
+function submitComment(){
+  const inp=document.getElementById('commentInp');
+  const text=(inp?.value||'').trim();
+  if(!text||_panelId===null)return;
+  const t=TASKS.find(x=>x.id===_panelId);
+  if(!t)return;
+  if(!Array.isArray(t.comments))t.comments=[];
+  t.comments.push({text,ts:new Date().toISOString()});
+  inp.value='';
+  renderComments(t,document.getElementById('commentList'));
+  scheduleAutosave();
+}
+
+function closePanel(){
+  _panelId=null;
+  document.getElementById('panelBackdrop').classList.remove('open');
+  document.getElementById('sidePanel').classList.remove('open');
+}
+
+// ── BOARD SNAPSHOTS ───────────────────────────────────────────
+const SNAP_LS_KEY='ganttSnapshots';
+
+function getSnapshots(){
+  try{return JSON.parse(localStorage.getItem(SNAP_LS_KEY))||[];}
+  catch{return[];}
+}
+
+function openSnapModal(){
+  renderSnapList();
+  document.getElementById('snapOverlay').classList.add('open');
+}
+function closeSnapModal(){
+  document.getElementById('snapOverlay').classList.remove('open');
+}
+
+function renderSnapList(){
+  const list=document.getElementById('snapList');
+  const snaps=getSnapshots();
+  list.innerHTML='';
+  if(!snaps.length){
+    list.innerHTML='<div class="snap-empty">No snapshots yet. Save one above.</div>';
+    return;
+  }
+  snaps.forEach((snap,i)=>{
+    const item=document.createElement('div');item.className='snap-item';
+    const info=document.createElement('div');info.className='snap-item-info';
+    const name=document.createElement('div');name.className='snap-item-name';name.textContent=snap.name;
+    const date=document.createElement('div');date.className='snap-item-date';
+    date.textContent=new Date(snap.savedAt).toLocaleString('en-AU',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+    info.appendChild(name);info.appendChild(date);item.appendChild(info);
+    const restoreBtn=document.createElement('button');restoreBtn.className='snap-btn restore';restoreBtn.textContent='Restore';
+    restoreBtn.onclick=()=>restoreSnapshot(i);
+    const delBtn=document.createElement('button');delBtn.className='snap-btn';delBtn.textContent='Delete';
+    delBtn.onclick=()=>deleteSnapshot(i);
+    item.appendChild(restoreBtn);item.appendChild(delBtn);
+    list.appendChild(item);
+  });
+}
+
+async function saveSnapshot(forceName){
+  const nameEl=document.getElementById('snapNameInp');
+  const name=forceName||(nameEl&&nameEl.value.trim())||'Snapshot '+new Date().toLocaleDateString('en-AU');
+  const snap={
+    id:Date.now(),name,
+    savedAt:new Date().toISOString(),
+    tasks:JSON.parse(JSON.stringify(TASKS)),
+    streams:JSON.parse(JSON.stringify(STREAMS)),
+    stream_meta:JSON.parse(JSON.stringify(STREAM_META)),
+    collapsed:JSON.parse(JSON.stringify(COLLAPSED)),
+    nextId
+  };
+  // Save to localStorage
+  const snaps=getSnapshots();
+  snaps.unshift(snap);
+  if(snaps.length>20)snaps.length=20; // cap at 20
+  localStorage.setItem(SNAP_LS_KEY,JSON.stringify(snaps));
+  // Save to Supabase snapshots table (best effort)
+  try{
+    await fetch(SUPA_URL+'/rest/v1/plan_snapshots',{
+      method:'POST',
+      headers:{...SUPA_HEADERS,'Prefer':'resolution=merge-duplicates,return=minimal'},
+      body:JSON.stringify({id:String(snap.id),name,saved_at:snap.savedAt,data:snap})
+    });
+  }catch(e){/* silent — localStorage is the primary store */}
+  if(nameEl)nameEl.value='';
+  renderSnapList();
+}
+
+function restoreSnapshot(i){
+  if(!confirm('Restore this snapshot? Your current plan will be replaced.'))return;
+  const snap=getSnapshots()[i];
+  if(!snap)return;
+  TASKS.length=0;snap.tasks.forEach(t=>{if(!Array.isArray(t.comments))t.comments=[];TASKS.push(t);});
+  Object.keys(STREAMS).forEach(k=>delete STREAMS[k]);Object.assign(STREAMS,snap.streams);
+  Object.keys(STREAM_META).forEach(k=>delete STREAM_META[k]);Object.assign(STREAM_META,snap.stream_meta);
+  Object.keys(COLLAPSED).forEach(k=>delete COLLAPSED[k]);Object.assign(COLLAPSED,snap.collapsed||{});
+  nextId=snap.nextId||TASKS.reduce((m,t)=>Math.max(m,t.id),0)+1;
+  closeSnapModal();
+  applyColWidths();buildLegend();buildFilters();render();
+  scheduleAutosave();
+}
+
+function deleteSnapshot(i){
+  if(!confirm('Delete this snapshot?'))return;
+  const snaps=getSnapshots();snaps.splice(i,1);
+  localStorage.setItem(SNAP_LS_KEY,JSON.stringify(snaps));
+  renderSnapList();
+}
+
+// ── JSON EXPORT / IMPORT ──────────────────────────────────────
+function exportJson(){
+  const data={version:1,exportedAt:new Date().toISOString(),nextId,STREAMS,STREAM_META,TASKS};
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}));
+  a.download='content-dev-plan-'+new Date().toISOString().slice(0,10)+'.json';
+  a.click();
+}
+
+function loadJsonFile(input){
+  const file=input.files[0];if(!file)return;input.value='';
+  const reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      const d=JSON.parse(e.target.result);
+      if(!d.TASKS||!d.STREAMS)throw new Error('Invalid backup file');
+      TASKS.length=0;
+      d.TASKS.forEach(t=>{if(!Array.isArray(t.comments))t.comments=[];TASKS.push(t);});
+      Object.keys(STREAMS).forEach(k=>delete STREAMS[k]);Object.assign(STREAMS,d.STREAMS||{});
+      Object.keys(STREAM_META).forEach(k=>delete STREAM_META[k]);Object.assign(STREAM_META,d.STREAM_META||{});
+      nextId=d.nextId||TASKS.reduce((m,t)=>Math.max(m,t.id),0)+1;
+      applyColWidths();buildLegend();buildFilters();render();scheduleAutosave();
+    }catch(err){alert('Could not load file: '+err.message);}
+  };
+  reader.readAsText(file);
+}
+
 // ── AUTOSAVE ─────────────────────────────────────────────────
 let _autosaveTimer=null;
 let _loadComplete=false;  // Don't autosave during initial load
@@ -4436,8 +4762,10 @@ function startRealtimeSync(){
 }
 
 // ── NORMALISE TASK DATA ─────────────────────────────────────
-TASKS.forEach(t=>{if(!Array.isArray(t.ld))t.ld=t.ld?String(t.ld).split(',').map(x=>x.trim()).filter(Boolean):[];});
+TASKS.forEach(t=>{if(!Array.isArray(t.ld))t.ld=t.ld?String(t.ld).split(',').map(x=>x.trim()).filter(Boolean):[];if(!Array.isArray(t.comments))t.comments=[];});
 // ── INIT ──────────────────────────────────────────────────────
+// Apply saved theme
+(function(){const t=localStorage.getItem('ganttTheme');if(t==='dark'){document.body.classList.add('dark');const b=document.getElementById('darkToggleBtn');if(b)b.textContent='☀️';}})();
 // Step 1: render immediately from baked data so page is never blank
 applyColWidths();buildLegend();buildFilters();render();setupColResize();setupDragDrop();
 if(hmOpen){document.getElementById('heatmapPanel').classList.add('open');document.getElementById('capBtn').classList.add('on');buildHeatmap();}
@@ -4448,4 +4776,27 @@ loadFromSupabase();
 </script>
 
 
+
+<!-- Side panel -->
+<div class="panel-backdrop" id="panelBackdrop" onclick="closePanel()"></div>
+<div class="side-panel" id="sidePanel">
+  <div class="panel-hdr">
+    <span class="panel-title" id="panelTitle">Task detail</span>
+    <button class="panel-close" onclick="closePanel()">✕</button>
+  </div>
+  <div class="panel-body" id="panelBody"></div>
+</div>
+
+<!-- Snapshot modal -->
+<div id="snapOverlay">
+  <div class="snap-modal">
+    <h3>📸 Board Snapshots</h3>
+    <div class="snap-save-row">
+      <input type="text" id="snapNameInp" placeholder="Snapshot name (optional)…">
+      <button class="act pri" onclick="saveSnapshot()">Save now</button>
+    </div>
+    <div class="snap-list" id="snapList"></div>
+    <button class="act" onclick="closeSnapModal()" style="align-self:flex-end">Close</button>
+  </div>
+</div>
 </body></html>
