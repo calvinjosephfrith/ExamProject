@@ -4438,11 +4438,12 @@ function startRealtimeSync(){
 // ── NORMALISE TASK DATA ─────────────────────────────────────
 TASKS.forEach(t=>{if(!Array.isArray(t.ld))t.ld=t.ld?String(t.ld).split(',').map(x=>x.trim()).filter(Boolean):[];});
 // ── INIT ──────────────────────────────────────────────────────
-applyColWidths();
-if(hmOpen){document.getElementById('heatmapPanel').classList.add('open');document.getElementById('capBtn').classList.add('on');}
+// Step 1: render immediately from baked data so page is never blank
+applyColWidths();buildLegend();buildFilters();render();setupColResize();setupDragDrop();
+if(hmOpen){document.getElementById('heatmapPanel').classList.add('open');document.getElementById('capBtn').classList.add('on');buildHeatmap();}
 // Update today badge with real date
 (function(){const d=new Date();document.getElementById('todayBadge').textContent='Today '+d.getDate()+' '+d.toLocaleString('default',{month:'short'});})();
-// Load live state from Supabase (falls back to baked data on error)
+// Step 2: fetch live state from Supabase and re-render (updates baked data silently)
 loadFromSupabase();
 </script>
 
